@@ -4,13 +4,15 @@ public class DiceGame {
     Scanner input = new Scanner(System.in);
     public static void main(String[] args)
     {
-        int[] dice = new int[5];
+        Die[] dice = new Die[5];
+        for (int i = 0; i < dice.length; i++) {
+            dice[i] = new Die();
+        }
         DiceGame dicegame = new DiceGame();
         dicegame.playRound(dice);
-
     }
-    public void playRound(int[] dice) {
-
+    public void playRound(Die[] dice)
+    {
         rollAllDice(dice);
         System.out.println();
         sumDice(dice);
@@ -28,39 +30,38 @@ public class DiceGame {
         }
     }
 
-    public static void printDice(int[] dice)
+    public static void printDice(Die[] dice)
     {
         System.out.println("Terningerne er kastet:");
         for (int i = 0; i < dice.length; i++) {
-            dice[i] = Die.roll();
-            System.out.print(dice[i] + " ");
+            dice[i].roll();
+            System.out.print(dice[i].getNumber() + " ");
 
         }
     }
 
-    public static int sumDice(int[] dice)
+    public static int sumDice(Die[] dice)
     {
         int sum = 0;
-        for (int number : dice) {
-            sum += number;
+        for (Die number : dice) {
+            sum += number.getNumber();
         }
         System.out.println("Summen af terningerne er: " + sum);
         return sum;
     }
 
-    public static double averageRoll(int[] dice)
+    public static double averageRoll(Die[] dice)
     {
         int average = 0;
-        for (int number : dice) {
-            average += number;
+        for (Die number : dice) {
+            average += number.getNumber();
         }
         System.out.println("Gennemsnittet af terningerne er: " + average);
         return (double) average / dice.length;
     }
 
-    public static void rollAllDice(int[] dice)
+    public static void rollAllDice(Die[] dice)
     {
-        Die.roll();
         printDice(dice);
     }
 }

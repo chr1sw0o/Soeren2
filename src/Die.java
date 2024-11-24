@@ -1,8 +1,12 @@
 import java.util.Random;
 
 public class Die {
-    public static Random rand = new Random();
-    public static int roll() {
-        return rand.nextInt(6) + 1;
+    private int number;
+
+    public int getNumber() {
+        return number;
+    }
+    public void roll() {
+        number = (int) (Math.random() * 6) + 1;
     }
 }
