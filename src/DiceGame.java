@@ -19,8 +19,11 @@ public class DiceGame {
         String replay = input.nextLine();
         if (replay.equals("ja")) {
             playRound(dice);
-        } else {
+        } else if (replay.equals("nej")) {
             System.out.println("Tak, for du spillede med!");
+            System.exit(0);
+        } else {
+            System.out.println("Ugyldigt input, programmet lukker");
             System.exit(0);
         }
     }
